@@ -1,23 +1,41 @@
-# Hello world docker action
+# PyPI Latest Version Action
 
-This action prints "Hello World" to the log or "Hello" + the name of a person to greet. To learn how this action was built, see "[Creating a Docker container action](https://help.github.com/en/articles/creating-a-docker-container-action)" in the GitHub Help documentation.
+This action checks PyPI for the latest version of the passed package, and stores it in outputs.
 
 ## Inputs
 
-### `who-to-greet`
+### `package`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** Which package to get the version of.
 
 ## Outputs
 
-### `time`
+### `version`
 
-The time we greeted you.
+The latest version of the requested PyPI package.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-docker-action@master
+uses: whoopnip/pypi-latest-version-action@master
+id: output_pypi_version
 with:
-  who-to-greet: 'Mona the Octocat'
+  package: my_package
 ```
+
+This is useful in a PyPI package repo. If you have another action which reads 
+the current version in the repo, this enables triggers based on whether the 
+current version has already been uploaded. For example:
+
+```yaml
+name: Output build version
+id: output_build_version
+run: |
+  bash output-version.sh
+
+name: Only If Version Changed
+if: steps.output_pypi_version.outputs.version != steps.output_build_version.outputs.version
+run: |
+  echo version was ${{ steps.output_pypi_version.outputs.version }} and now is ${{ steps.output_build_version.outputs.version }}
+```
+
