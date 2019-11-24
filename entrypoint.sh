@@ -1,8 +1,6 @@
 #!/bin/sh -l
 
-ls -l
-echo $(ls -l)
-echo $(realpath .)
+cd /
 
 version=$(python get_version.py $INPUT_PACKAGE)
 
