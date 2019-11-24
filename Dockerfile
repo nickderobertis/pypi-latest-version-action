@@ -6,5 +6,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 COPY get_version.py /get_version.py
 
+WORKDIR /
+
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]

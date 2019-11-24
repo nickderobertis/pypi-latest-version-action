@@ -1,5 +1,9 @@
 #!/bin/sh -l
 
+ls -l
+echo $(ls -l)
+echo $(realpath .)
+
 version=$(python get_version.py $INPUT_PACKAGE)
 
 if [ $? -ne 0 ]; then
