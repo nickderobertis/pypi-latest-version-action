@@ -1,15 +1,14 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Get PyPI Latest Version'
+description: 'Get the latest version of a package on PyPI and output it'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  package:  # id of input
+    description: 'Which package to get the version of'
     required: true
-    default: 'World'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  version: # id of output
+    description: 'The latest version of the requested PyPI package'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.package }}

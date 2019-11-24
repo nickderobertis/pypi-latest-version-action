@@ -1,5 +1,4 @@
 #!/bin/sh -l
 
-echo "Hello $1"
-time=$(date)
-echo ::set-output name=time::$time
+version=$(python get_version.py $INPUT_PACKAGE)
+echo ::set-output name=version::$version
