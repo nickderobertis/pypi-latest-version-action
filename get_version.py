@@ -2,7 +2,7 @@ from typing import List
 from subprocess import run, PIPE
 import re
 
-PIP_INSTALL_NO_VERSION_PATTERN = re.compile(r'([\w\s:=(]+versions: )([\d., ]+)(\)[\\n\w\s:=]+)')
+PIP_INSTALL_NO_VERSION_PATTERN = re.compile(r"([\-',./\w\s:=(\\]+versions: )([\d., ]+)(\)[\\n\w\s:=]+)")
 
 
 def get_package_latest_version(package: str) -> str:
