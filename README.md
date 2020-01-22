@@ -1,6 +1,7 @@
 # PyPI Latest Version Action
 
-This action checks PyPI for the latest version of the passed package, and stores it in outputs.
+This action checks PyPI for the latest version of the passed package, and stores it in outputs. 
+If the package has never been published on PyPI, it will return `none`.
 
 ## Inputs
 
