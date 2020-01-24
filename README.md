@@ -1,6 +1,6 @@
 # PyPI Latest Version Action
 
-This action checks PyPI for the latest version of the passed package, and stores it in outputs. 
+This action checks PyPI for the latest version of the passed package, and stores it in outputs.
 If the package has never been published on PyPI, it will return `none`.
 
 ## Inputs
@@ -18,14 +18,14 @@ The latest version of the requested PyPI package.
 ## Example usage
 
 ```yaml
-uses: whoopnip/pypi-latest-version-action@master
+uses: nickderobertis/pypi-latest-version-action@master
 id: output_pypi_version
 with:
   package: my_package
 ```
 
-This is useful in a PyPI package repo. If you have another action which reads 
-the current version in the repo, this enables triggers based on whether the 
+This is useful in a PyPI package repo. If you have another action which reads
+the current version in the repo, this enables triggers based on whether the
 current version has already been uploaded. For example:
 
 ```yaml
@@ -39,4 +39,3 @@ if: steps.output_pypi_version.outputs.version != steps.output_build_version.outp
 run: |
   echo version was ${{ steps.output_pypi_version.outputs.version }} and now is ${{ steps.output_build_version.outputs.version }}
 ```
-
